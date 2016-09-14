@@ -1,5 +1,5 @@
 {
-    "name": "kcaporaso/form-extra-bundle",
+    "name": "kcaporaso/SimpleThingsFormExtraBundle",
     "description": "This bundles provides extra FormType's for Symfony2",
     "keywords": ["symfony2", "form", "recaptcha"],
     "type": "symfony-bundle",
