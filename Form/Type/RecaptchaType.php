@@ -7,11 +7,10 @@ use Symfony\Component\Form\Exception\InvalidConfigurationException;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\HttpFoundation\Request;
 
 use SimpleThings\FormExtraBundle\Service\Recaptcha;
 use SimpleThings\FormExtraBundle\Form\DataTransformer\RecaptchaTransformer;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * A ReCaptcha type for use with Google ReCatpcha services. It embeds two fields that are used
@@ -53,10 +52,7 @@ class RecaptchaType extends AbstractType
     }
 
     /**
-     * Configures the Type
-     *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -74,11 +70,7 @@ class RecaptchaType extends AbstractType
     }
 
     /**
-     * Sets attributes for use with the renderer
-     *
-     * @param FormView      $view
-     * @param FormInterface $form
-     * @param array         $options
+     * {@inheritdoc}
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -87,13 +79,9 @@ class RecaptchaType extends AbstractType
     }
 
     /**
-     * Options for this type
-     *
-     * @param  array $options
-     *
-     * @return array
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'required'        => true,
@@ -103,10 +91,7 @@ class RecaptchaType extends AbstractType
     }
 
     /**
-     * Because this have property_path = null and it shouldnt be written this parent
-     * is a field.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getParent()
     {
@@ -114,11 +99,9 @@ class RecaptchaType extends AbstractType
     }
 
     /**
-     * Used to identify the rendering block
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'formextra_recaptcha';
     }

@@ -3,8 +3,7 @@
 namespace SimpleThings\FormExtraBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * A Form type that just renders the field as a p tag. This is useful for forms where certain field
@@ -19,7 +18,7 @@ class PlainType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'read_only' => true,
@@ -30,7 +29,7 @@ class PlainType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'formextra_plain';
     }

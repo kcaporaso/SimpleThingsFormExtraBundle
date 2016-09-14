@@ -6,13 +6,12 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FieldTypeHelpExtension extends AbstractTypeExtension
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -20,9 +19,7 @@ class FieldTypeHelpExtension extends AbstractTypeExtension
     }
 
     /**
-     * @param FormView      $view
-     * @param FormInterface $form
-     * @param array         $options
+     * {@inheritdoc}
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -30,9 +27,9 @@ class FieldTypeHelpExtension extends AbstractTypeExtension
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'help' => null,
@@ -40,7 +37,7 @@ class FieldTypeHelpExtension extends AbstractTypeExtension
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getExtendedType()
     {

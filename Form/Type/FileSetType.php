@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\HttpFoundation\File\File;
 use SimpleThings\FormExtraBundle\Form\DataTransformer\FileSetTransformer;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Extends the File type not to handle a single file, but allowing to incrementally add one more file to a set.
@@ -21,11 +21,17 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class FileSetType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->addModelTransformer(new FileSetTransformer());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $data = $form->getData();
@@ -54,7 +60,10 @@ class FileSetType extends AbstractType
         $view->vars['delete_id'] = $options['delete_id'];
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'delete_route' => false,
@@ -62,11 +71,17 @@ class FileSetType extends AbstractType
         ));
     }
 
-    public function getName()
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
     {
         return 'formextra_fileset';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getParent()
     {
         return 'file';

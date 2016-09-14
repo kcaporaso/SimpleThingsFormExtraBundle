@@ -1,5 +1,5 @@
 {
-    "name": "simplethings/form-extra-bundle",
+    "name": "kcaporaso/form-extra-bundle",
     "description": "This bundles provides extra FormType's for Symfony2",
     "keywords": ["symfony2", "form", "recaptcha"],
     "type": "symfony-bundle",
@@ -11,10 +11,15 @@
     {
         "name" : "Henrik Bjørnskov",
         "email" : "henrik@bjrnskov.dk"
-    }],
+    },
+    {
+        "name" : "Kevin Caporaso",
+        "email" : "capnetconsulting@gmail.com"
+    }
+    ],
     "require": {
-        "php": ">=5.3.0",
-        "symfony/symfony" : "~2.1"
+        "php": ">=5.5.9",
+        "symfony/symfony" : "~2.8"
     },
     "autoload": {
         "psr-0": {

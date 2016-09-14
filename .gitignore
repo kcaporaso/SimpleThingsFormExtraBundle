@@ -3,3 +3,4 @@ coverage
 vendor
 composer.phar
 composer.lock
+.idea/

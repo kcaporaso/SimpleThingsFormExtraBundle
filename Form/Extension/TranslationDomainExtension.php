@@ -43,8 +43,6 @@ class TranslationDomainExtension extends AbstractTypeExtension
     }
 
     /**
-     * @param array $options
-     *
      * @return array
      */
     public function getDefaultOptions()

@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -31,10 +32,7 @@ class ImageType extends AbstractType
     }
 
     /**
-     * Configures the Type
-     *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -44,10 +42,7 @@ class ImageType extends AbstractType
     }
 
     /**
-     * Sets attributes for use with the renderer
-     *
-     * @param FormView      $view
-     * @param FormInterface $form
+     * {@inheritdoc}
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -77,13 +72,9 @@ class ImageType extends AbstractType
     }
 
     /**
-     * Options for this type
-     *
-     * @param  array $options
-     *
-     * @return array
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'base_path'                 => false,
@@ -97,11 +88,7 @@ class ImageType extends AbstractType
     }
 
     /**
-     * Inherits from file type and adds displaying capabilities.
-     *
-     * @param array $options
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getParent()
     {
@@ -109,11 +96,9 @@ class ImageType extends AbstractType
     }
 
     /**
-     * Used to identify the rendering block
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'formextra_image';
     }
